@@ -2282,7 +2282,7 @@ class _InputDecoratorState extends State<InputDecorator> with TickerProviderStat
                 hintStyle.overflow ??
                 (decoration.hintMaxLines == null ? null : TextOverflow.ellipsis),
             textAlign: textAlign,
-            maxLines: decoration.hintMaxLines,
+            maxLines: decoration.hintMaxLines?.floor(),
           );
       final bool showHint = isEmpty && !_hasInlineLabel;
       hint =
@@ -3097,7 +3097,7 @@ class InputDecoration {
   /// This value is passed along to the [Text.maxLines] attribute
   /// of the [Text] widget used to display the hint text. [TextOverflow.ellipsis] is
   /// used to handle the overflow when it is limited to single line.
-  final int? hintMaxLines;
+  final double? hintMaxLines;
 
   /// The duration of the [hintText] fade in and fade out animations.
   ///
@@ -3812,7 +3812,7 @@ class InputDecoration {
     TextStyle? hintStyle,
     TextDirection? hintTextDirection,
     Duration? hintFadeDuration,
-    int? hintMaxLines,
+    double? hintMaxLines,
     bool? maintainHintHeight,
     bool? maintainHintSize,
     Widget? error,
