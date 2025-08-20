@@ -65,7 +65,7 @@ void main() {
   });
 
   final Key textFieldKey = UniqueKey();
-  Widget textFieldBuilder({int? maxLines = 1, int? minLines}) {
+  Widget textFieldBuilder({int? maxLines = 1, double? minLines}) {
     return boilerplate(
       child: TextField(
         key: textFieldKey,
@@ -4989,7 +4989,7 @@ void main() {
   });
 
   testWidgets('Multiline text when wrapped in Expanded', (WidgetTester tester) async {
-    Widget expandedTextFieldBuilder({int? maxLines = 1, int? minLines, bool expands = false}) {
+    Widget expandedTextFieldBuilder({int? maxLines = 1, double? minLines, bool expands = false}) {
       return boilerplate(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

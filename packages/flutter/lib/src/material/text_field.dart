@@ -325,7 +325,7 @@ class TextField extends StatefulWidget {
        smartQuotesType =
            smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
        assert(maxLines == null || maxLines > 0),
-       assert(minLines == null || minLines > 0),
+       assert(minLines == null || minLines! > 0.0),
        assert(
          (maxLines == null) || (minLines == null) || (maxLines >= minLines),
          "minLines can't be greater than maxLines",
@@ -507,7 +507,7 @@ class TextField extends StatefulWidget {
   /// {@macro flutter.widgets.editableText.minLines}
   ///  * [expands], which determines whether the field should fill the height of
   ///    its parent.
-  final int? minLines;
+  final double? minLines;
 
   /// {@macro flutter.widgets.editableText.expands}
   final bool expands;
@@ -1010,7 +1010,7 @@ class TextField extends StatefulWidget {
       DiagnosticsProperty<bool>('enableSuggestions', enableSuggestions, defaultValue: true),
     );
     properties.add(IntProperty('maxLines', maxLines, defaultValue: 1));
-    properties.add(IntProperty('minLines', minLines, defaultValue: null));
+    properties.add(DoubleProperty('minLines', minLines, defaultValue: null));
     properties.add(DiagnosticsProperty<bool>('expands', expands, defaultValue: false));
     properties.add(IntProperty('maxLength', maxLength, defaultValue: null));
     properties.add(
@@ -1688,7 +1688,7 @@ class _TextFieldState extends State<TextField>
           smartQuotesType: widget.smartQuotesType,
           enableSuggestions: widget.enableSuggestions,
           maxLines: widget.maxLines,
-          minLines: widget.minLines,
+          minLines: widget.minLines?.round(),
           expands: widget.expands,
           // Only show the selection highlight when the text field is focused.
           selectionColor: focusNode.hasFocus ? selectionColor : null,
