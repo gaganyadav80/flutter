@@ -6495,7 +6495,7 @@ class RichText extends MultiChildRenderObjectWidget {
     this.textHeightBehavior,
     this.selectionRegistrar,
     this.selectionColor,
-  }) : assert(maxLines == null || maxLines > 0),
+  }) : assert(maxLines == null || maxLines > 0.0),
        assert(selectionRegistrar == null || selectionColor != null),
        assert(
          textScaleFactor == 1.0 || identical(textScaler, TextScaler.noScaling),
@@ -6568,9 +6568,9 @@ class RichText extends MultiChildRenderObjectWidget {
   /// If the text exceeds the given number of lines, it will be truncated according
   /// to [overflow].
   ///
-  /// If this is 1, text will not wrap. Otherwise, text will be wrapped at the
+  /// If this is 1.0, text will not wrap. Otherwise, text will be wrapped at the
   /// edge of the box.
-  final int? maxLines;
+  final double? maxLines;
 
   /// Used to select a font when the same Unicode character can
   /// be rendered differently, depending on the locale.
@@ -6663,7 +6663,7 @@ class RichText extends MultiChildRenderObjectWidget {
     properties.add(
       DiagnosticsProperty<TextScaler>('textScaler', textScaler, defaultValue: TextScaler.noScaling),
     );
-    properties.add(IntProperty('maxLines', maxLines, ifNull: 'unlimited'));
+    properties.add(DoubleProperty('maxLines', maxLines, ifNull: 'unlimited'));
     properties.add(
       EnumProperty<TextWidthBasis>(
         'textWidthBasis',

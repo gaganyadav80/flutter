@@ -64,7 +64,7 @@ class DefaultTextStyle extends InheritedTheme {
     this.textWidthBasis = TextWidthBasis.parent,
     this.textHeightBehavior,
     required super.child,
-  }) : assert(maxLines == null || maxLines > 0);
+  }) : assert(maxLines == null || maxLines > 0.0);
 
   /// A const-constructable default text style that provides fallback values.
   ///
@@ -108,7 +108,7 @@ class DefaultTextStyle extends InheritedTheme {
     TextAlign? textAlign,
     bool? softWrap,
     TextOverflow? overflow,
-    int? maxLines,
+    double? maxLines,
     TextWidthBasis? textWidthBasis,
     TextHeightBehavior? textHeightBehavior,
     required Widget child,
@@ -155,12 +155,12 @@ class DefaultTextStyle extends InheritedTheme {
   /// If the text exceeds the given number of lines, it will be truncated according
   /// to [overflow].
   ///
-  /// If this is 1, text will not wrap. Otherwise, text will be wrapped at the
+  /// If this is 1.0, text will not wrap. Otherwise, text will be wrapped at the
   /// edge of the box.
   ///
   /// If this is non-null, it will override even explicit null values of
   /// [Text.maxLines].
-  final int? maxLines;
+  final double? maxLines;
 
   /// The strategy to use when calculating the width of the Text.
   ///
@@ -225,7 +225,7 @@ class DefaultTextStyle extends InheritedTheme {
       ),
     );
     properties.add(EnumProperty<TextOverflow>('overflow', overflow, defaultValue: null));
-    properties.add(IntProperty('maxLines', maxLines, defaultValue: null));
+    properties.add(DoubleProperty('maxLines', maxLines, defaultValue: null));
     properties.add(
       EnumProperty<TextWidthBasis>(
         'textWidthBasis',
@@ -398,7 +398,7 @@ class DefaultTextHeightBehavior extends InheritedTheme {
 ///
 /// {@tool snippet}
 ///
-/// Setting [maxLines] to `1` is not equivalent to disabling soft wrapping with
+/// Setting [maxLines] to `1.0` is not equivalent to disabling soft wrapping with
 /// [softWrap]. This is apparent when using [TextOverflow.fade] as the following
 /// examples show.
 ///
@@ -408,13 +408,13 @@ class DefaultTextHeightBehavior extends InheritedTheme {
 /// const Text(
 ///   'Hello, how are you?',
 ///   overflow: TextOverflow.fade,
-///   maxLines: 1,
+///   maxLines: 1.0,
 /// )
 /// ```
 ///
 /// Here soft wrapping is enabled and the [Text] widget tries to wrap the words
 /// "how are you?" to a second line. This is prevented by the [maxLines] value
-/// of `1`. The result is that a second line overflows and the fade appears in a
+/// of `1.0`. The result is that a second line overflows and the fade appears in a
 /// horizontal direction at the bottom.
 ///
 /// ![If a single line overflows the Text widget displays a horizontal fade](https://flutter.github.io/assets-for-api-docs/assets/widgets/text_fade_soft_wrap.png)
@@ -647,14 +647,14 @@ class Text extends StatelessWidget {
   /// If the text exceeds the given number of lines, it will be truncated according
   /// to [overflow].
   ///
-  /// If this is 1, text will not wrap. Otherwise, text will be wrapped at the
+  /// If this is 1.0, text will not wrap. Otherwise, text will be wrapped at the
   /// edge of the box.
   ///
   /// If this is null, but there is an ambient [DefaultTextStyle] that specifies
   /// an explicit number for its [DefaultTextStyle.maxLines], then the
   /// [DefaultTextStyle] value will take precedence. You can use a [RichText]
   /// widget directly to entirely override the [DefaultTextStyle].
-  final int? maxLines;
+  final double? maxLines;
 
   /// {@template flutter.widgets.Text.semanticsLabel}
   /// An alternative semantics label for this text.
@@ -808,7 +808,7 @@ class Text extends StatelessWidget {
     );
     properties.add(EnumProperty<TextOverflow>('overflow', overflow, defaultValue: null));
     properties.add(DoubleProperty('textScaleFactor', textScaleFactor, defaultValue: null));
-    properties.add(IntProperty('maxLines', maxLines, defaultValue: null));
+    properties.add(DoubleProperty('maxLines', maxLines, defaultValue: null));
     properties.add(
       EnumProperty<TextWidthBasis>('textWidthBasis', textWidthBasis, defaultValue: null),
     );
@@ -850,7 +850,7 @@ class _SelectableTextContainer extends StatefulWidget {
   final bool softWrap;
   final TextOverflow overflow;
   final TextScaler textScaler;
-  final int? maxLines;
+  final double? maxLines;
   final Locale? locale;
   final StrutStyle? strutStyle;
   final TextWidthBasis textWidthBasis;
@@ -926,7 +926,7 @@ class _RichText extends StatelessWidget {
   final bool softWrap;
   final TextOverflow overflow;
   final TextScaler textScaler;
-  final int? maxLines;
+  final double? maxLines;
   final Locale? locale;
   final StrutStyle? strutStyle;
   final TextWidthBasis textWidthBasis;

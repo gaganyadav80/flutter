@@ -1390,7 +1390,7 @@ class TextStyle with Diagnosticable {
     TextDirection? textDirection,
     TextScaler textScaler = TextScaler.noScaling,
     String? ellipsis,
-    int? maxLines,
+    double? maxLines,
     TextHeightBehavior? textHeightBehavior,
     Locale? locale,
     String? fontFamily,
@@ -1400,7 +1400,7 @@ class TextStyle with Diagnosticable {
     double? height,
     StrutStyle? strutStyle,
   }) {
-    assert(maxLines == null || maxLines > 0);
+    assert(maxLines == null || maxLines > 0.0);
     final TextLeadingDistribution? leadingDistribution = this.leadingDistribution;
     final TextHeightBehavior? effectiveTextHeightBehavior =
         textHeightBehavior ??

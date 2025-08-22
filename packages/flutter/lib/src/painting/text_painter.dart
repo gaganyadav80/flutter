@@ -604,14 +604,14 @@ class TextPainter {
     )
     double textScaleFactor = 1.0,
     TextScaler textScaler = const _UnspecifiedTextScaler(),
-    int? maxLines,
+    double? maxLines,
     String? ellipsis,
     Locale? locale,
     StrutStyle? strutStyle,
     TextWidthBasis textWidthBasis = TextWidthBasis.parent,
     TextHeightBehavior? textHeightBehavior,
   }) : assert(text == null || text.debugAssertIsValid()),
-       assert(maxLines == null || maxLines > 0),
+       assert(maxLines == null || maxLines > 0.0),
        assert(
          textScaleFactor == 1.0 || identical(textScaler, const _UnspecifiedTextScaler()),
          'Use textScaler instead.',
@@ -650,7 +650,7 @@ class TextPainter {
     )
     double textScaleFactor = 1.0,
     TextScaler textScaler = TextScaler.noScaling,
-    int? maxLines,
+    double? maxLines,
     String? ellipsis,
     Locale? locale,
     StrutStyle? strutStyle,
@@ -704,7 +704,7 @@ class TextPainter {
     )
     double textScaleFactor = 1.0,
     TextScaler textScaler = TextScaler.noScaling,
-    int? maxLines,
+    double? maxLines,
     String? ellipsis,
     Locale? locale,
     StrutStyle? strutStyle,
@@ -970,12 +970,12 @@ class TextPainter {
   /// subsequent lines are dropped.
   ///
   /// After this is set, you must call [layout] before the next call to [paint].
-  int? get maxLines => _maxLines;
-  int? _maxLines;
+  double? get maxLines => _maxLines;
+  double? _maxLines;
 
   /// The value may be null. If it is not null, then it must be greater than zero.
-  set maxLines(int? value) {
-    assert(value == null || value > 0);
+  set maxLines(double? value) {
+    assert(value == null || value > 0.0);
     if (_maxLines == value) {
       return;
     }

@@ -1905,7 +1905,7 @@ class TextStyle {
 Int32List _encodeParagraphStyle(
   TextAlign? textAlign,
   TextDirection? textDirection,
-  int? maxLines,
+  double? maxLines,
   String? fontFamily,
   double? fontSize,
   double? height,
@@ -1987,7 +1987,7 @@ class ParagraphStyle {
   ///   [TextAlign.start] and [TextAlign.end] in the `textAlign` field.
   ///
   /// * `maxLines`: The maximum number of lines painted. Lines beyond this
-  ///   number are silently dropped. For example, if `maxLines` is 1, then only
+  ///   number are silently dropped. For example, if `maxLines` is 1.0, then only
   ///   one line is rendered. If `maxLines` is null, but `ellipsis` is not null,
   ///   then lines after the first one that overflows the width constraints are
   ///   dropped. The width constraints are those set in the
@@ -2036,7 +2036,7 @@ class ParagraphStyle {
   ParagraphStyle({
     TextAlign? textAlign,
     TextDirection? textDirection,
-    int? maxLines,
+    double? maxLines,
     String? fontFamily,
     double? fontSize,
     double? height,

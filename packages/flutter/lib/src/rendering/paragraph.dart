@@ -329,7 +329,7 @@ class RenderParagraph extends RenderBox
     )
     double textScaleFactor = 1.0,
     TextScaler textScaler = const _UnspecifiedTextScaler(),
-    int? maxLines,
+    double? maxLines,
     Locale? locale,
     StrutStyle? strutStyle,
     TextWidthBasis textWidthBasis = TextWidthBasis.parent,
@@ -338,7 +338,7 @@ class RenderParagraph extends RenderBox
     Color? selectionColor,
     SelectionRegistrar? registrar,
   }) : assert(text.debugAssertIsValid()),
-       assert(maxLines == null || maxLines > 0),
+       assert(maxLines == null || maxLines > 0.0),
        assert(
          identical(textScaler, const _UnspecifiedTextScaler()) || textScaleFactor == 1.0,
          'textScaleFactor is deprecated and cannot be specified when textScaler is specified.',
@@ -643,12 +643,12 @@ class RenderParagraph extends RenderBox
   /// An optional maximum number of lines for the text to span, wrapping if
   /// necessary. If the text exceeds the given number of lines, it will be
   /// truncated according to [overflow] and [softWrap].
-  int? get maxLines => _textPainter.maxLines;
+  double? get maxLines => _textPainter.maxLines;
 
   /// The value may be null. If it is not null, then it must be greater than
   /// zero.
-  set maxLines(int? value) {
-    assert(value == null || value > 0);
+  set maxLines(double? value) {
+    assert(value == null || value > 0.0);
     if (_textPainter.maxLines == value) {
       return;
     }
@@ -1429,7 +1429,7 @@ class RenderParagraph extends RenderBox
       DiagnosticsProperty<TextScaler>('textScaler', textScaler, defaultValue: TextScaler.noScaling),
     );
     properties.add(DiagnosticsProperty<Locale>('locale', locale, defaultValue: null));
-    properties.add(IntProperty('maxLines', maxLines, ifNull: 'unlimited'));
+    properties.add(DoubleProperty('maxLines', maxLines, ifNull: 'unlimited'));
   }
 }
 

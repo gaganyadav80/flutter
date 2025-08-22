@@ -393,7 +393,7 @@ class _HelperErrorState extends State<_HelperError> with SingleTickerProviderSta
               style: widget.helperStyle,
               textAlign: widget.textAlign,
               overflow: TextOverflow.ellipsis,
-              maxLines: widget.helperMaxLines,
+              maxLines: widget.helperMaxLines?.toDouble(),
             ),
       ),
     );
@@ -422,7 +422,7 @@ class _HelperErrorState extends State<_HelperError> with SingleTickerProviderSta
                     style: widget.errorStyle,
                     textAlign: widget.textAlign,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: widget.errorMaxLines,
+                    maxLines: widget.errorMaxLines?.toDouble(),
                   ),
             ),
           ),
@@ -2325,7 +2325,7 @@ class _InputDecoratorState extends State<InputDecorator> with TickerProviderStat
                 hintStyle.overflow ??
                 (decoration.hintMaxLines == null ? null : TextOverflow.ellipsis),
             textAlign: textAlign,
-            maxLines: decoration.hintMaxLines,
+            maxLines: decoration.hintMaxLines?.toDouble(),
           );
       final bool showHint = isEmpty && !_hasInlineLabel;
       hint = maintainHintSize
